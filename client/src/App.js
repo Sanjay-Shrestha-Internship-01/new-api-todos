@@ -36,9 +36,9 @@ class App extends React.Component {
       console.log(err);
     }
   };
-  updateApi = async (id, val) => {
+  updateApi = async (_id, val) => {
     try {
-      let data = await todoService.updateApiCalls(id, { title: val });
+      let data = await todoService.updateApiCalls(_id, { title: val });
       this.getTodo();
     } catch (err) {
       console.log(err);
