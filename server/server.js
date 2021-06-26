@@ -1,23 +1,23 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-require('dotenv').config();
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv'
+import toDoRoutes from './routes/todo.js';
 
 const app = express();
-const port = process.env.PORT || 5000;
+dotenv.config();
 
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
-const uri = process .env.ATLAS_URI;
-mongoose.connect(uri, {useNewUrlParser: true, UseCreateIndex: true});
-const connection = mongoose.connection;
-connection.once('open', () =>{
-    console.log("MongoDB database connection established successfully");
-})
-const todoRouter = require('./routes/todo');
-app.use('/todo', todoRouter);
+app.use('/todos', toDoRoutes);
 
-app.listen(port, () => {
-    console.log(`Server is running on port : ${port}`);
-});
+const PORT = process.env.PORT || 4000 ;
+
+
+mongoose.connect(process.env.ATLAS_URI,{useNewUrlParser:true, useUnifiedTopology:true})
+.then(()=> app.listen(PORT, ()=> console.log(`Server running on PORT :${PORT}`)))
+.catch((error) => console.log(error.message));
+
+
+mongoose.set('useFindAndModify', false);

@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const todoSchema = mongoose.Schema({
-  todos: {
-    title: String,
+  title: {
+    type: String,
     required: true,
     trim: true,
     maxlength: 100,
@@ -19,4 +19,4 @@ const todoSchema = mongoose.Schema({
 });
 
 const Todo = mongoose.model("Todo", todoSchema);
-exports.Todo = Todo
+exports.todos = Todo
