@@ -28,9 +28,9 @@ class App extends React.Component {
     }
   };
 
-  deleteApi = async (id) => {
+  deleteApi = async (_id) => {
     try {
-      let data = await todoService.deleteApiCalls(id);
+      let data = await todoService.deleteApiCalls(_id);
       this.getTodo();
     } catch (err) {
       console.log(err);

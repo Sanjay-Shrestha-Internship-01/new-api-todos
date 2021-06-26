@@ -16,7 +16,7 @@ export default class BodyBottom extends Component {
               <>
                 <form
                   onSubmit={() =>
-                    this.props.updateApi(item.id, `${editTodo.title}`)
+                    this.props.updateApi(item._id, `${editTodo.title}`)
                   }
                 >
                   <div className="todo-checklist">
@@ -45,7 +45,7 @@ export default class BodyBottom extends Component {
                         <div className="checklist-icons">
                           <div
                             className="first-icon"
-                            onClick={() => this.props.deleteApi(item.id)}
+                            onClick={() => this.props.deleteApi(item._id)}
                           >
                             <i className="far fa-trash-alt second-icon"></i>
                             <div className="icon-dropdown">
@@ -106,7 +106,7 @@ export default class BodyBottom extends Component {
                         </div>
                         <div
                           className="first-icon"
-                          onClick={() => this.props.deleteApi(item.id)}
+                          onClick={() => this.props.deleteApi(item._id)}
                         >
                           <i className="far fa-trash-alt second-icon"></i>
                           <div className="icon-dropdown">
