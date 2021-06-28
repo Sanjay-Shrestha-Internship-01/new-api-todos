@@ -12,10 +12,10 @@ const todoSchema = mongoose.Schema({
     type: Date,
     
   },
-  // completed: {
-  //   type: Boolean,
-  //   default: false,
-  // },
+  completed: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const Todos = mongoose.model("Todo", todoSchema);

@@ -1,18 +1,19 @@
-import todos from "../models/todo.model.js";
+import Todos from "../models/todo.model.js";
 
 export const getTodo = async (req, res) => {
   try {
-    const todo = await todos.find();
+    const todo = await Todos.find({
+      _id: "",
+    });
     res.status(200).json(todo);
-    console.log(todo);
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(400).json({ message: error.message });
   }
 };
 
 export const saveTodo = async (req, res) => {
   try {
-    const todo = new todos({
+    const todo = new Todos({
       title: req.body.title,
       date: req.body.date,
     });
@@ -25,16 +26,15 @@ export const saveTodo = async (req, res) => {
 
 export const deleteTodo = async (req, res) => {
   try {
-    const todo = await todos.findByIdAndDelete(req.params.todo_id);
+    const todo = await Todos.findByIdAndDelete(req.params.todo_id);
     return res.status(200).send(todo);
   } catch (error) {
     console.log(error);
   }
 };
 export const updateTodo = async (req, res) => {
-  console.log("update bhayo");
   try {
-    const todo = await todos.findByIdAndUpdate(req.params.todo_id, {
+    const todo = await Todos.findByIdAndUpdate(req.params.todo_id, {
       title: req.body.title,
     });
     return res.status(200).send(todo);
